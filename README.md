@@ -159,6 +159,4 @@ flowchart LR
 ├── hexagonal/                Projeto 2 — Hexagonal
 ├── onion/                    Projeto 3 — Onion
 ├── hexagonal_onion_mvc/      Projeto 4 — Hexagonal + Onion + MVC
-├── prompt.md                 requisito original
-└── spdd/                     análise e especificação (REASONS Canvas) usadas para gerar o código
 ```
