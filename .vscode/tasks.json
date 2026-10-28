@@ -1,0 +1,45 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build-mvc",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "build",
+        "${workspaceFolder}/mvc/PizzariaByte.Mvc.sln"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "build-hexagonal",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "build",
+        "${workspaceFolder}/hexagonal/PizzariaByte.Hexagonal.sln"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "build-onion",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "build",
+        "${workspaceFolder}/onion/PizzariaByte.Onion.sln"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "build-hexagonal_onion_mvc",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "build",
+        "${workspaceFolder}/hexagonal_onion_mvc/PizzariaByte.Combined.sln"
+      ],
+      "problemMatcher": "$msCompile"
+    }
+  ]
+}

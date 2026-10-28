@@ -1,0 +1,54 @@
+@page "/pedidos/{id:guid}"
+@model ResumoModel
+@{
+    ViewData["Title"] = "Resumo do pedido";
+}
+@if (Model.Pedido is null)
+{
+    <h1>Pedido não encontrado</h1>
+    <div class="mensagem erro">Pedido não encontrado. Lembre-se: os dados ficam em memória e são perdidos quando a aplicação é reiniciada.</div>
+    <p><a class="botao" asp-page="/Cardapio">Voltar ao cardápio</a></p>
+    return;
+}
+@{
+    var pedido = Model.Pedido;
+    var status = pedido.Status switch
+    {
+        StatusPedido.Recebido => "Recebido",
+        StatusPedido.Confirmado => "Confirmado",
+        StatusPedido.EntregaPendente => "Entrega pendente",
+        _ => pedido.Status.ToString()
+    };
+}
+<h1>Resumo do pedido</h1>
+
+@if (pedido.PossuiFalhaDeIntegracao)
+{
+    <div class="mensagem aviso">Pedido registrado, mas houve falha em uma ou mais integrações. Veja os detalhes abaixo.</div>
+}
+else
+{
+    <div class="mensagem sucesso">Pedido realizado com sucesso!</div>
+}
+
+<table>
+    <tr><th>Número do pedido</th><td>@pedido.Id</td></tr>
+    <tr><th>Pizza</th><td>@pedido.NomePizza</td></tr>
+    <tr><th>Quantidade</th><td>@pedido.Quantidade</td></tr>
+    <tr><th>Preço unitário</th><td>@pedido.PrecoUnitario.ToString("C")</td></tr>
+    <tr><th>Subtotal</th><td>@pedido.Subtotal.ToString("C")</td></tr>
+    <tr><th>Taxa de entrega</th><td>@pedido.TaxaEntrega.ToString("C")</td></tr>
+    <tr><th>Total</th><td><strong>@pedido.Total.ToString("C")</strong></td></tr>
+    <tr><th>Endereço de entrega</th><td>@pedido.EnderecoEntrega</td></tr>
+    <tr><th>Status</th><td>@status</td></tr>
+</table>
+
+<h2>Status das integrações</h2>
+<ul class="integracoes">
+    @foreach (var integracao in pedido.Integracoes)
+    {
+        <li>@(integracao.Sucesso ? "✅" : "❌") <strong>@integracao.Conector</strong>: @integracao.Mensagem</li>
+    }
+</ul>
+
+<p><a class="botao" asp-page="/Cardapio">Fazer outro pedido</a></p>

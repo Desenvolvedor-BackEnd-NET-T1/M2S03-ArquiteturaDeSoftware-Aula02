@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PizzariaByte</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <a class="marca" asp-page="/Index">🍕 PizzariaByte</a>
+        <nav>
+            <a asp-page="/Index">Início</a>
+            <a asp-page="/Cardapio">Cardápio</a>
+        </nav>
+    </header>
+    <main>
+        @RenderBody()
+    </main>
+    <footer>Projeto: Onion Architecture — camada de apresentação em Razor Pages</footer>
+</body>
+</html>

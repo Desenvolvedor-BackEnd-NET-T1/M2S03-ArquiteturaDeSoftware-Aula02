@@ -1,0 +1,77 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "PizzariaByte MVC (5101)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build-mvc",
+      "program": "${workspaceFolder}/mvc/src/PizzariaByte.Mvc/bin/Debug/net10.0/PizzariaByte.Mvc.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/mvc/src/PizzariaByte.Mvc",
+      "stopAtEntry": false,
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "http://localhost:5101"
+      },
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+      }
+    },
+    {
+      "name": "PizzariaByte Hexagonal (5102)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build-hexagonal",
+      "program": "${workspaceFolder}/hexagonal/src/PizzariaByte.Hexagonal.Adapters.Web/bin/Debug/net10.0/PizzariaByte.Hexagonal.Adapters.Web.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/hexagonal/src/PizzariaByte.Hexagonal.Adapters.Web",
+      "stopAtEntry": false,
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "http://localhost:5102"
+      },
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+      }
+    },
+    {
+      "name": "PizzariaByte Onion (5103)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build-onion",
+      "program": "${workspaceFolder}/onion/src/PizzariaByte.Onion.Web/bin/Debug/net10.0/PizzariaByte.Onion.Web.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/onion/src/PizzariaByte.Onion.Web",
+      "stopAtEntry": false,
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "http://localhost:5103"
+      },
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+      }
+    },
+    {
+      "name": "PizzariaByte Combinado (5104)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build-hexagonal_onion_mvc",
+      "program": "${workspaceFolder}/hexagonal_onion_mvc/src/PizzariaByte.Combined.Web/bin/Debug/net10.0/PizzariaByte.Combined.Web.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/hexagonal_onion_mvc/src/PizzariaByte.Combined.Web",
+      "stopAtEntry": false,
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "http://localhost:5104"
+      },
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+      }
+    }
+  ]
+}

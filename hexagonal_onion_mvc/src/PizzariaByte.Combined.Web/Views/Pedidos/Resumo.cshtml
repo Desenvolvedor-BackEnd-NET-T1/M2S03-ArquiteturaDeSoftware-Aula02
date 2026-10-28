@@ -1,0 +1,36 @@
+@model ResumoPedidoViewModel
+@{
+    ViewData["Title"] = "Resumo do pedido";
+}
+<h1>Resumo do pedido</h1>
+
+@if (Model.PossuiFalhaDeIntegracao)
+{
+    <div class="mensagem aviso">Pedido registrado, mas houve falha em uma ou mais integrações. Veja os detalhes abaixo.</div>
+}
+else
+{
+    <div class="mensagem sucesso">Pedido realizado com sucesso!</div>
+}
+
+<table>
+    <tr><th>Número do pedido</th><td>@Model.Id</td></tr>
+    <tr><th>Pizza</th><td>@Model.NomePizza</td></tr>
+    <tr><th>Quantidade</th><td>@Model.Quantidade</td></tr>
+    <tr><th>Preço unitário</th><td>@Model.PrecoUnitario.ToString("C")</td></tr>
+    <tr><th>Subtotal</th><td>@Model.Subtotal.ToString("C")</td></tr>
+    <tr><th>Taxa de entrega</th><td>@Model.TaxaEntrega.ToString("C")</td></tr>
+    <tr><th>Total</th><td><strong>@Model.Total.ToString("C")</strong></td></tr>
+    <tr><th>Endereço de entrega</th><td>@Model.EnderecoEntrega</td></tr>
+    <tr><th>Status</th><td>@Model.StatusDescricao</td></tr>
+</table>
+
+<h2>Status das integrações</h2>
+<ul class="integracoes">
+    @foreach (var integracao in Model.Integracoes)
+    {
+        <li>@(integracao.Sucesso ? "✅" : "❌") <strong>@integracao.Conector</strong>: @integracao.Mensagem</li>
+    }
+</ul>
+
+<p><a class="botao" asp-controller="Cardapio" asp-action="Index">Fazer outro pedido</a></p>

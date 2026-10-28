@@ -1,0 +1,22 @@
+@page
+@model CardapioModel
+@{
+    ViewData["Title"] = "Cardápio";
+}
+<h1>Cardápio</h1>
+<table>
+    <thead>
+        <tr><th>Pizza</th><th>Ingredientes</th><th>Preço</th><th></th></tr>
+    </thead>
+    <tbody>
+        @foreach (var pizza in Model.Pizzas)
+        {
+            <tr>
+                <td>@pizza.Nome</td>
+                <td>@pizza.Descricao</td>
+                <td>@pizza.Preco.ToString("C")</td>
+                <td><a class="botao" asp-page="/Pedidos/Novo" asp-route-pizzaId="@pizza.Id">Pedir</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

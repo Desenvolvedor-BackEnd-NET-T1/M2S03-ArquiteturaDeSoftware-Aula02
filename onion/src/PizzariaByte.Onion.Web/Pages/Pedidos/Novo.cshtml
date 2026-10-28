@@ -1,0 +1,29 @@
+@page
+@model NovoModel
+@{
+    ViewData["Title"] = "Novo pedido";
+}
+<h1>Novo pedido</h1>
+<form method="post">
+    <div asp-validation-summary="All"></div>
+
+    <div class="campo">
+        <label asp-for="Entrada.PizzaId"></label>
+        <select asp-for="Entrada.PizzaId" asp-items="@(new SelectList(Model.Cardapio.Select(p => new { p.Id, Texto = $"{p.Nome} — {p.Preco:C}" }), "Id", "Texto"))">
+            <option value="">Selecione...</option>
+        </select>
+    </div>
+
+    <div class="campo">
+        <label asp-for="Entrada.Quantidade"></label>
+        <input asp-for="Entrada.Quantidade" type="number" min="1" max="50" />
+    </div>
+
+    <div class="campo">
+        <label asp-for="Entrada.EnderecoEntrega"></label>
+        <input asp-for="Entrada.EnderecoEntrega" maxlength="200" placeholder="Rua das Flores, 123" />
+    </div>
+
+    <p>Taxa de entrega: R$ 8,00 — grátis para pedidos a partir de R$ 100,00.</p>
+    <button class="botao" type="submit">Confirmar pedido</button>
+</form>
