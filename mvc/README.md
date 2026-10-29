@@ -20,9 +20,9 @@ No MVC, "Model" não é só uma classe de dados. É **toda a parte da aplicaçã
 
 ## 3. Conceitos fundamentais
 
-- **Controller magro**: o `PedidosController` não calcula nada nem salva nada. Ele delega ao `CriarPedidoService`.
+- **Controller com responsabilidades limitadas**: o `PedidosController` não calcula nada nem salva nada. Ele delega ao `CriarPedidoService`.
 - **Model rico**: `Pedido.Criar` valida quantidade e endereço e calcula subtotal, taxa e total.
-- **View burra**: as Views só exibem dados. Até o texto do status é decidido na apresentação, sem regra de negócio.
+- **View focada em apresentação**: as Views só exibem dados. Até o texto do status é decidido na apresentação, sem regra de negócio.
 - **Post-Redirect-Get (PRG)**: depois do POST que cria o pedido, o Controller redireciona para `GET /Pedidos/{id}`. Apertar F5 no resumo não cria um pedido duplicado.
 - **Injeção de dependência**: o `CriarPedidoService` recebe pelo construtor cinco **interfaces** (`ICardapioRepository`, `IPedidoRepository`, `IEmailGateway`, `IDeliveryGateway` e `IObservabilityGateway`) e não conhece as classes concretas.
 - **Interfaces no MVC** existem aqui para permitir DI e testes. Ninguém as chama de "portas", e elas não definem a arquitetura. Compare com o projeto Hexagonal.
